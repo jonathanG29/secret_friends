@@ -6,33 +6,44 @@ let friends = [];
 function agregarAmigo() {
     let amigoAñadido = (document.querySelector('#amigo').value)
 
-    // Validar que el campo no esté vacío y que el amigo no haya sido agregado
-    if (amigoAñadido === '') {
-        alert('Debes ingresar el nombre de tu amigo')
-        return
-    }else if (amigoAñadido.length <= 2) {
-        alert('el nombre del amigo debe ser mayor a 2 caracteres')
-        limpiarCaja()
-        return
-    }else if (friends.includes(amigoAñadido)) {
-        alert('El amigo ya fue agregado')
-        limpiarCaja()
-        return
-    } else if (!isNaN(amigoAñadido)) {
-        alert('El nombre del amigo no puede ser un número')
-        limpiarCaja()
-        return
+    if(!esNombreValido(amigoAñadido)) {
+        limpiarCaja();
+        return;
     }
 
     friends.push(amigoAñadido)
-    console.log(friends)
     limpiarCaja();
     mostrarAmigos();
 }
 
+
+// funcion para validar el nombre del amigo
+function esNombreValido(nombre) {
+    // Validar que el campo no esté vacío y que el amigo no haya sido agregado
+    if (nombre === '') {
+        alert('Debes ingresar el nombre de tu amigo');
+        return false;
+    } else if (nombre.length <= 2) {
+        alert('El nombre del amigo debe ser mayor a 2 caracteres');
+        return false;
+    } else if (friends.includes(nombre)) {
+        alert('El amigo ya fue agregado');
+        return false;
+    } else if (!isNaN(nombre)) {
+        alert('El nombre del amigo no puede ser un número');
+        return false;
+    } else if (friends.length >= 5) {
+        alert('No puedes agregar más de 5 amigos');
+        return false;
+    }
+    return true;
+}
+
+
+
 // funcion para limpiar la caja de texto
 function limpiarCaja(){
-    document.querySelector('#amigo').value = ''
+    document.querySelector('#amigo').value = '';
 }
 
 
