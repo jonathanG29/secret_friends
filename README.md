@@ -3,6 +3,8 @@
 ## Descripción
 Este proyecto es una aplicación web para organizar un juego de "Amigo Secreto". Permite a los usuarios agregar nombres de amigos, mostrar la lista de amigos agregados, seleccionar un amigo al azar y reiniciar el juego.
 
+[https://friendssecret.netlify.app/]
+
 ## Instalación
 Sigue estos pasos para instalar y ejecutar el proyecto en tu máquina local:
 
