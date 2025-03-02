@@ -26,8 +26,8 @@ function agregarAmigo() {
 
     friends.push(amigoAñadido)
     console.log(friends)
-    limpiarCaja()
-    mostrarAmigos()
+    limpiarCaja();
+    mostrarAmigos();
 }
 
 // funcion para limpiar la caja de texto
@@ -39,7 +39,6 @@ function limpiarCaja(){
 // Función para mostrar la lista de amigos en el DOM
 function mostrarAmigos() {
     let lista = document.querySelector('#listaAmigos');
-    console.log(lista)
     lista.innerHTML = ''; // Limpiar la lista existente
 
     for (let amigo of friends) {
@@ -47,4 +46,30 @@ function mostrarAmigos() {
         li.textContent = amigo;
         lista.appendChild(li);
     }
+}
+
+// funcion para seleciionar un amigo aleatorio
+
+function sortearAmigo() {
+
+    if (friends.length === 0) {
+        alert('Debes agregar amigos para poder seleccionar uno')
+        return
+    }
+
+
+    
+    let amigoAleatorio = friends[Math.floor(Math.random() * friends.length)]
+    let resultado = document.querySelector('#resultado')
+    resultado.textContent = `El amigo seleccionado es: ${amigoAleatorio}`
+}
+
+document.querySelector('button-draw').addEventListener('click', seleccionarAmigo);
+
+// funcion para reiniciar el juego
+
+function reiniciarJuego(){
+    friends = []
+    mostrarAmigos()
+    document.querySelector('#resultado').textContent = ''
 }
